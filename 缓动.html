@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #demo {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 500px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div id="demo"></div>
+<script>
+    var timer =null;
+    var btn = document.getElementById("btn");
+    var demo = document.getElementById("demo");
+    btn.onclick=function(){
+        clearInterval(timer);
+        timer=setInterval(function(){
+            //leader = leader + step
+            var leader = demo.offsetLeft;
+//            var step = 10;
+            var target = 0;
+            var step = (target-leader)/10;
+            step= step>0?Math.ceil(step):Math.floor(step);
+//            var step = Math.ceil(step);
+            leader = leader + step;
+            console.log("target"+target+"--leader"+leader+"--step"+step);
+            demo.style.left=leader+"px";
+            if(leader===target){
+                clearInterval(timer);
+            }
+        },15)
+    }
+</script>
+</body>
+</html>
